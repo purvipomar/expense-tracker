@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">₹</span><div><h1>Expense Tracker</h1><p>Keep your spending in view.</p></div></div>
+      <span class="pill" id="connection">Connecting…</span>
+    </header>
+    <section class="overview">
+      <div class="stat primary"><span>Total spending</span><strong id="total">₹0.00</strong><small>Across all recorded expenses</small></div>
+      <div class="stat"><span>Transactions</span><strong id="count">0</strong><small>Saved expenses</small></div>
+      <div class="stat"><span>Categories</span><strong id="categories">0</strong><small>Types of spending</small></div>
+    </section>
+    <section class="content-grid">
+      <section class="panel list-panel">
+        <div class="section-heading"><div><h2>Your expenses</h2><p>View and manage saved transactions.</p></div><button class="secondary" id="refreshBtn" type="button">↻ Refresh</button></div>
+        <div class="toolbar"><input type="search" id="search" placeholder="Search expenses…" aria-label="Search expenses"/><select id="filter" aria-label="Filter by category"><option value="">All categories</option></select></div>
+        <div id="expenseList" class="expense-list"><p class="empty">Loading expenses…</p></div>
+      </section>
+      <section class="panel form-panel">
+        <div class="section-heading"><div><h2 id="formTitle">Add an expense</h2><p id="formSubtitle">Record your latest purchase.</p></div></div>
+        <form id="expenseForm">
+          <label for="title">Title</label><input id="title" type="text" maxlength="100" required placeholder="e.g. Movie Ticket"/>
+          <label for="amount">Amount (₹)</label><input id="amount" type="number" min="0.01" step="0.01" required placeholder="0.00"/>
+          <label for="category">Category</label><select id="category" required><option>Food</option><option>Transport</option><option>Entertainment</option><option>Shopping</option><option>Bills</option><option>Health</option><option>Education</option><option>Other</option></select>
+          <button class="primary-btn" type="submit" id="submitBtn">+ Add expense</button>
+          <button class="secondary cancel hidden" type="button" id="cancelEdit">Cancel edit</button>
+        </form>
+        <div id="notice" class="notice" role="status" aria-live="polite"></div>
+      </section>
+    </section>
+    <footer>Powered by AWS API Gateway, Lambda &amp; DynamoDB. Keep this site private until API authentication is configured.</footer>
+  </main>
+</body>
+</html>
